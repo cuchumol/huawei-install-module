@@ -1,0 +1,8 @@
+aaa
+undo local-user {{ ftp_user }}
+q 
+undo ftp server enable
+y
+undo ftp server source -i MEth0/0/0
+y
+commit

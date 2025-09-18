@@ -1,0 +1,41 @@
+The script requires an Excel file with device information in `device_tables/` folder.   
+**This file is not included in the repository.**    
+
+The file must provide at least:  
+- Device name  
+- Management IPv4 address (with mask)
+
+
+huawei-install-module
+├── check_result.py        # Checks if the module is installed and its startup status
+├── module_download.py     # Uploads and installs the module via FTP
+├── .env                   # Environment variables (FTP credentials, module file name, remote directory)
+├── requirements.txt       # Python dependencies
+├── templates/             # Configuration templates for FTP user setup
+│   ├── ftp_user.txt       # Template to create FTP user
+│   └── undo_ftp_user.txt  # Template to remove FTP user configuration
+├── result_tables/         # Excel output of module status per device
+├── device_tables/         # Input Excel files with device info (Sysname, MgntIPv4-With-Mask, etc.)
+
+
+### module_install.py
+
+1) Connects to Huawei devices via SSH (Netmiko)
+2) Configures a temporary FTP user on the device using templates
+3) Uploads the module file to the device via FTP
+4) Installs the module and optionally sets it for next-startup
+5) Removes the temporary FTP configuration after installation
+6) Supports multithreading to run on multiple devices simultaneously
+7) Outputs logs per device in the logs/ folder
+
+Usage: python module_install.py
+
+
+### check_result.py
+
+1) Connects to Huawei devices via SSH (Netmiko)
+2) Checks if the module is installed on the device
+3) Checks if the module is set for next-startup
+4) Saves the results per device to xlsx
+
+Usage: python check_result.py

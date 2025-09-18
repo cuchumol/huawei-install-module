@@ -1,0 +1,10 @@
+ftp server enable
+ftp server source -i MEth0/0/0
+y
+aaa
+local-user {{ ftp_user }}  password cipher {{ ftp_password }}
+local-user {{ ftp_user }} service-type ftp
+local-user {{ ftp_user }} password-force-change disable
+local-user {{ ftp_user }} level 3
+local-user {{ ftp_user }} ftp-directory flash:
+commit
