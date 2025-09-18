@@ -15,7 +15,7 @@ huawei-install-module
 │   ├── ftp_user.txt       # Template to create FTP user
 │   └── undo_ftp_user.txt  # Template to remove FTP user configuration
 ├── result_tables/         # Excel output of module status per device
-├── device_tables/         # Input Excel files with device info (Sysname, MgntIPv4-With-Mask, etc.)
+├── device_tables/         # Input Excel files with device info (Hostname, IP_address-With-Mask)
 
 
 ### module_install.py
